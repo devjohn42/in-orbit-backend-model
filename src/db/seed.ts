@@ -1,11 +1,11 @@
 // Cadastros mockados para popular o db com dados fictícios
 
 import { client, db } from '.'
-import { goalCompletios, goals } from './schema'
+import { goalCompletions, goals } from './schema'
 import dayjs from 'dayjs'
 
 async function seed() {
-  await db.delete(goalCompletios)
+  await db.delete(goalCompletions)
   await db.delete(goals)
 
   const result = await db
@@ -19,7 +19,7 @@ async function seed() {
 
   const startOfWeek = dayjs().startOf('week')
 
-  await db.insert(goalCompletios).values([
+  await db.insert(goalCompletions).values([
     { goalId: result[1].id, createdAt: startOfWeek.toDate() },
     { goalId: result[2].id, createdAt: startOfWeek.add(1, 'day').toDate() },
   ])
