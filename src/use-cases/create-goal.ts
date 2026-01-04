@@ -2,25 +2,25 @@ import { db } from '../db'
 import { goals } from '../db/schema'
 
 interface CreateGoalRequest {
-  title: string
-  desiredWeeklyFrequency: number
+	title: string
+	desiredWeeklyFrequency: number
 }
 
 export const createGoal = async ({
-  title,
-  desiredWeeklyFrequency,
+	title,
+	desiredWeeklyFrequency
 }: CreateGoalRequest) => {
-  const result = await db
-    .insert(goals)
-    .values({
-      title,
-      desiredWeeklyFrequency,
-    })
-    .returning()
+	const result = await db
+		.insert(goals)
+		.values({
+			title,
+			desiredWeeklyFrequency
+		})
+		.returning()
 
-  const goal = result[0]
+	const goal = result[0]
 
-  return {
-    goal,
-  }
+	return {
+		goal
+	}
 }
