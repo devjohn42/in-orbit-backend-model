@@ -31,6 +31,7 @@ export const getWeekSummary = async () => {
 			})
 			.from(goalCompletions)
 			.innerJoin(goals, eq(goals.id, goalCompletions.goalId))
+			.orderBy(desc(goalCompletions.createdAt))
 			.where(
 				and(
 					gte(goalCompletions.createdAt, firstDayOfWeek),
