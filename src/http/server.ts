@@ -1,6 +1,9 @@
-import fastifyCors from '@fastify/cors'
+import { fastifyCors } from '@fastify/cors'
+import fastifySwagger from '@fastify/swagger'
+import fastifySwaggerUi from '@fastify/swagger-ui'
 import fastify from 'fastify'
 import {
+	jsonSchemaTransform,
 	serializerCompiler,
 	validatorCompiler,
 	type ZodTypeProvider
@@ -18,6 +21,20 @@ app.register(fastifyCors, {
 
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
+
+app.register(fastifySwagger, {
+	openapi: {
+		info: {
+			title: 'In Orbit',
+			version: '1.0.0'
+		}
+	},
+	transform: jsonSchemaTransform
+})
+
+app.register(fastifySwaggerUi, {
+	routePrefix: '/docs'
+})
 
 app.register(createGoalRoute)
 app.register(createGoalCompletionRoute)
