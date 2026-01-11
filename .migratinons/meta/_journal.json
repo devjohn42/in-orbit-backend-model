@@ -15,6 +15,20 @@
       "when": 1766535025375,
       "tag": "0001_conscious_cable",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1768092620363,
+      "tag": "0002_zippy_norrin_radd",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1768092869610,
+      "tag": "0003_youthful_toad_men",
+      "breakpoints": true
     }
   ]
 }

@@ -1,0 +1,2 @@
+ALTER TABLE "goals" ADD COLUMN "gold_id" text;--> statement-breakpoint
+ALTER TABLE "goals" ADD CONSTRAINT "goals_gold_id_users_id_fk" FOREIGN KEY ("gold_id") REFERENCES "public"."users"("id") ON DELETE no action ON UPDATE no action;
