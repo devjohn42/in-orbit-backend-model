@@ -8,6 +8,7 @@ import {
 	validatorCompiler,
 	type ZodTypeProvider
 } from 'fastify-type-provider-zod'
+import { authenticateFromGithubRoute } from './routes/authenticate-from-github.route'
 import { createGoalCompletionRoute } from './routes/create-completion.route'
 import { createGoalRoute } from './routes/create-goal.route'
 import { getPendingGoalsRoute } from './routes/get-pending-goals.route'
@@ -40,6 +41,7 @@ app.register(createGoalRoute)
 app.register(createGoalCompletionRoute)
 app.register(getPendingGoalsRoute)
 app.register(getWeekSummaryRoute)
+app.register(authenticateFromGithubRoute)
 
 app
 	.listen({
