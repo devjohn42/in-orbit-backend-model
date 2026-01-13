@@ -3,7 +3,11 @@ import { and, desc, eq, gte, lte, sql } from 'drizzle-orm'
 import { db } from '../db'
 import { goalCompletions, goals } from '../db/schema'
 
-export const getWeekSummary = async () => {
+interface GetWeekSummaryRequest {
+	userId: string
+}
+
+export const getWeekSummary = async ({ userId }: GetWeekSummaryRequest) => {
 	const firstDayOfWeek = dayjs().startOf('week').toDate()
 	const lastDayOfWeek = dayjs().endOf('week').toDate()
 
@@ -16,7 +20,7 @@ export const getWeekSummary = async () => {
 				createdAt: goals.createdAt
 			})
 			.from(goals)
-			.where(lte(goals.createdAt, lastDayOfWeek))
+			.where(and(lte(goals.createdAt, lastDayOfWeek), eq(goals.userId, userId)))
 	)
 
 	const goalsCompletedInWeek = db.$with('goals_completed_in_week').as(
@@ -35,7 +39,8 @@ export const getWeekSummary = async () => {
 			.where(
 				and(
 					gte(goalCompletions.createdAt, firstDayOfWeek),
-					lte(goalCompletions.createdAt, lastDayOfWeek)
+					lte(goalCompletions.createdAt, lastDayOfWeek),
+					eq(goals.userId, userId)
 				)
 			)
 	)
