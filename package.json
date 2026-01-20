@@ -11,7 +11,7 @@
     "db:generate": "npx drizzle-kit generate",
     "db:migrate": "npx drizzle-kit migrate",
     "db:studio": "npx drizzle-kit studio",
-    "db:migrate:test": "npx drizzle-kit migrate",
+    "db:migrate:test": "dotenv -e .env.test -- npx drizzle-kit migrate",
     "db:studio:test": "dotenv -e .env.test -- npx drizzle-kit studio",
     "seed": "tsx --env-file .env src/db/seed.ts",
     "check": "npx biome check src",
