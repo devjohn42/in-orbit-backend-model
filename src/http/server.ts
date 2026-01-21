@@ -16,6 +16,7 @@ import { createGoalRoute } from './routes/create-goal.route'
 import { getPendingGoalsRoute } from './routes/get-pending-goals.route'
 import { getProfile } from './routes/get-profile.route'
 import { getWeekSummaryRoute } from './routes/get-summary.route'
+import { getUserExperienceAndLevelRoute } from './routes/get-user-level-and-experience.route'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -50,6 +51,7 @@ app.register(getPendingGoalsRoute)
 app.register(getWeekSummaryRoute)
 app.register(authenticateFromGithubRoute)
 app.register(getProfile)
+app.register(getUserExperienceAndLevelRoute)
 
 app
 	.listen({
