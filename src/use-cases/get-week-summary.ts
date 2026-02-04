@@ -5,11 +5,12 @@ import { goalCompletions, goals } from '../db/schema'
 
 interface GetWeekSummaryRequest {
 	userId: string
+	weekStartAt: Date
 }
 
-export const getWeekSummary = async ({ userId }: GetWeekSummaryRequest) => {
-	const firstDayOfWeek = dayjs().startOf('week').toDate()
-	const lastDayOfWeek = dayjs().endOf('week').toDate()
+export const getWeekSummary = async ({ userId, weekStartAt }: GetWeekSummaryRequest) => {
+	const firstDayOfWeek = weekStartAt
+	const lastDayOfWeek = dayjs(weekStartAt).endOf('week').toDate()
 
 	const goalsCreatedUpToWeek = db.$with('goals_created_up_to_week').as(
 		db
