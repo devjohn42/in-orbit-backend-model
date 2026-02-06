@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-  "id": "cd68d5e1-0baf-495b-b1f2-99abac5e50d2",
-=======
   "id": "7f9f6366-ef54-4d79-ad41-da6319caa6aa",
->>>>>>> a527c7e6b99bd2245fa7942b2c0eddac00164823
   "prevId": "4e997acf-eaf8-4243-a140-d3e851c813e5",
   "version": "7",
   "dialect": "postgresql",

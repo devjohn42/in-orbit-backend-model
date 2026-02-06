@@ -25,6 +25,8 @@ export const authenticateFromGithubRoute: FastifyPluginAsyncZod = async (app) =>
 				code
 			})
 
+			console.log('Token gerado no backend:', token)
+
 			return reply.status(201).send({ token })
 		}
 	)

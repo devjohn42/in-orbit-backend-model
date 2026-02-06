@@ -186,9 +186,11 @@
                           "type": "number"
                         },
                         "total": {
+                          "nullable": true,
                           "type": "number"
                         },
                         "goalsPerDay": {
+                          "nullable": true,
                           "type": "object",
                           "additionalProperties": {
                             "type": "array",
